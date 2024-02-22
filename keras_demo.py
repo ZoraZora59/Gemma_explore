@@ -3,7 +3,10 @@ import keras_nlp
 import numpy as np
 
 gemma_lm = keras_nlp.models.GemmaCausalLM.from_preset("gemma_instruct_7b_en")
-gemma_lm.generate("Keras is a", max_length=30)
+print(gemma_lm.summary())
+
+print(gemma_lm.get_config())
+print(gemma_lm.generate("Keras is a", max_length=30)) # Generate with a single prompt.
 
 # Generate with batched prompts.
 gemma_lm.generate(["Keras is a", "I want to say"], max_length=30)
@@ -44,3 +47,4 @@ gemma_lm = keras_nlp.models.GemmaCausalLM.from_preset(
     preprocessor=None,
 )
 gemma_lm.fit(x=x, y=y, sample_weight=sw, batch_size=2)
+print("end")
